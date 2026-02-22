@@ -39,7 +39,7 @@ https://www.kaggle.com/datasets/spscientist/students-performance-in-exams
 
    
 ```bash
-python main.py
+python main1.py
 
 
 
