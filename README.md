@@ -38,7 +38,7 @@ https://www.kaggle.com/datasets/spscientist/students-performance-in-exams
 
 
 
-# Project 5 – Sales Summary Dashboard
+# Project 2 – Sales Summary Dashboard
 
 ## 📌 Description
 This project analyzes sales data and generates a summary dashboard using **Pandas and Matplotlib**.
