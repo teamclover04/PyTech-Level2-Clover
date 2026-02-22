@@ -1,5 +1,5 @@
 # PyTech-Level2-Clover
-# Problem 3 – Student Marks Analyzer
+# Project 1 – Student Marks Analyzer
 
 ## 📌 Description
 This project analyzes student performance data using **Pandas and Matplotlib**.
@@ -21,6 +21,44 @@ It calculates average marks, identifies highest and lowest scorers, and generate
 ## 📊 Dataset Source
 Students Performance Dataset (Kaggle):
 https://www.kaggle.com/datasets/spscientist/students-performance-in-exams
+
+---
+
+## 🛠 Technologies Used
+- Python
+- Pandas
+- Matplotlib
+
+---
+
+## ▶ How to Run
+
+1. Open terminal in this folder.
+2. Run:
+
+
+
+# Problem 5 – Sales Summary Dashboard
+
+## 📌 Description
+This project analyzes sales data and generates a summary dashboard using **Pandas and Matplotlib**.
+
+It calculates total sales per product line, visualizes trends, and exports reports.
+
+---
+
+## 🚀 Features
+- Load sales dataset dynamically
+- Calculate total sales per product line
+- Generate line chart visualization
+- Export sales summary as CSV file
+- Proper input validation implemented
+
+---
+
+## 📊 Dataset Source
+Sample Sales Dataset (Kaggle):
+https://www.kaggle.com/datasets/kyanyoga/sample-sales-data
 
 ---
 
