@@ -71,28 +71,49 @@ def plot_bar_chart():
         print("Load dataset first.")
         return
 
+    if "gender" not in df.columns:
+        print("Gender column not found.")
+        return
+
     score_cols = [col for col in df.columns if "score" in col.lower()]
 
-    for col in score_cols:
-        if col not in df.columns:
-            print(f"Column '{col}' missing.")
-            return
+    gender_avg = df.groupby("gender")[score_cols].mean()
 
-    subject_means = df[score_cols].mean()
+    x = range(len(score_cols))
+    width = 0.35
 
-    plt.figure(figsize=(9, 5))
-    bars= plt.bar(subject_means.index, subject_means.values,edgecolor="black",width=0.3)
-    colors = ["#D11151", "#6657E8", "#71D63E"]
-    for bar, color in zip(bars, colors):
-        bar.set_color(color)
-    for bar in bars:
-        height=bar.get_height()
-        plt.text(bar.get_x() + bar.get_width() / 2, height + 0.5, f"{height:2f}", ha="center", va="bottom",font="Cambria",size=12,weight="bold")
+    plt.figure(figsize=(9,5))
 
-    plt.title("Average Marks Per Subject",font="Cambria",size=16,weight="bold")
-    plt.xlabel("Subjects",font="Cambria",size=14,weight="bold")
-    plt.ylabel("Average Marks",font="Cambria",size=14,weight="bold")
+    boys = plt.bar([i - width/2 for i in x], gender_avg.loc["male"],width,label="Boys",color="#438BD8",edgecolor="black")
+
+    girls = plt.bar([i + width/2 for i in x],gender_avg.loc["female"],width,label="Girls", color="#D42D68",edgecolor="black")
+
+    for bars in [boys, girls]:
+        for bar in bars:
+            height = bar.get_height()
+            plt.text(bar.get_x() + bar.get_width()/2, height, f"{height:.1f}", ha="center", va="bottom", fontsize=10,fontweight="bold")
+
+    plt.xticks(x, score_cols)
+
+    plt.title("Average Marks by Gender per Subject",fontname="Cambria",fontsize=16, fontweight="bold")
+
+    plt.xlabel("Subjects", fontname="Cambria", fontsize=14,fontweight="bold")
+    plt.ylabel("Average Marks", fontname="Cambria", fontsize=14,fontweight="bold")
+
+    plt.legend()
     plt.grid(axis="y", linestyle="--", alpha=0.3)
+
+    def format_coord(x, y):
+        subject = list(score_cols)
+        index = int(round(x))
+
+        if 0 <= index < len(subject):
+            return f"(Subject: {subject[index]}, Marks: {y:.2f})"
+        else:
+            return f"(Marks: {y:.2f})"
+
+    plt.gca().format_coord = format_coord
+
     plt.tight_layout()
     plt.show()
 def plot_histogram():
@@ -116,3 +137,4 @@ def plot_histogram():
     plt.grid(True, linestyle="--", alpha=0.4)
     plt.tight_layout()
     plt.show()
+
